@@ -5,7 +5,7 @@ A small Python script to make Osu beatmap Collections in a quick and beautiful w
 一个快捷的Osu!整合软件，快速出合集。
 
 ## Preview: 
-(Now fixed to this naming style. Custom style will be supported in the future.)
+(Now fixed to this naming style, only support custom pack name and custom creator name. Custom style will be supported in the future.)
 https://osu.ppy.sh/beatmapsets/1010028#mania/2114329
 
 ## Running
@@ -74,7 +74,7 @@ Any unknown or not understandable errors, please directly contact derrickwolf@ou
   
 ## 预览：
 https://osu.ppy.sh/beatmapsets/1010028#mania/2114329
-注意：现在默认格式如此osz所示，自定义功能将在下一版本添加。
+注意：现在默认格式如此osz所示，只支持自定义作图者以及合集名称。更多自定义样式功能将在下一版本添加。
 
 ## 运行
 此程序运行有两种方式：通过.py文件运行（需要python3或以上）或者通过.exe可执行文件运行（需要Windows）。
