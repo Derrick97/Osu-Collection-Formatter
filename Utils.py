@@ -1,5 +1,13 @@
 import os
-import zipfile
+
+
+def remove_unallowed_character(s):
+    unallowed = ["/", "\\", "*", ":", "?", "<", ">", "|", "\""]
+    for c in unallowed:
+        if c in s:
+            s = s.replace(c, " ")
+    return s
+
 
 class Utils:
     def __init__(self, path):
@@ -11,13 +19,6 @@ class Utils:
         self.bg_dict = {}
         self.all_osu = []
         self.all_osu_after_renamed = []
-
-    def remove_unallowed_character(self, s):
-        unallowed = ["/", "\\", "*", ":", "?", "<", ">", "|", "\""]
-        for c in unallowed:
-            if c in s:
-                s = s.replace(c, " ")
-        return s
 
     def find_osz_files(self):
         targets = []
@@ -62,7 +63,8 @@ class Utils:
                 if new_version_name:
                     line_list.append("Version:" + new_version_name + "\n")
                 else:
-                    new_version_name = self.build_version_name(old_title, old_artist, old_creator, new_creator, old_version)
+                    new_version_name = self.build_version_name(old_title, old_artist, old_creator, new_creator,
+                                                               old_version)
                     line_list.append("Version:" + new_version_name + "\n")
             elif "BeatmapID:" in line:
                 line_list.append("BeatmapID:0" + "\n")
@@ -95,7 +97,8 @@ class Utils:
             else:
                 line_list.append(line)
         if not has_visited_audio:
-            self.audio_name_dict[old_audio_name] = self.new_audio_name(old_audio_name, old_title, self.music_counter)
+            self.audio_name_dict[old_audio_name] = self.get_new_audio_name(old_audio_name, old_title,
+                                                                           self.music_counter)
             line_list[3] = "AudioFilename: " + self.audio_name_dict[old_audio_name] + "\n"
             self.music_counter += 1
         f.truncate(0)
@@ -103,31 +106,33 @@ class Utils:
             f.writelines(line_list)
         new_name = self.rename_osu_file(new_artist_unicode, new_title_unicode, new_creator, new_version_name)
         self.all_osu_after_renamed.append(new_name)
-        os.rename(osu_file_name, new_name)
+        os.listdir(self.path)
+        os.rename(osu_file_name, self.path + new_name)
 
     def build_version_name(self, old_title, old_artist, old_creator, new_creator, old_version):
         if old_creator == new_creator:
-            return self.remove_unallowed_character(old_artist + " - " + old_title + " [" + old_version + "]")
+            return remove_unallowed_character(old_artist + " - " + old_title + " [" + old_version + "]")
         else:
-            return self.remove_unallowed_character(old_artist + " - " + old_title + " [" + old_creator + "\'s " + old_version + "]")
+            return remove_unallowed_character(
+                old_artist + " - " + old_title + " [" + old_creator + "\'s " + old_version + "]")
 
     def get_all_osu_diffs(self, name_list):
-        return [file for file in name_list if file[-4:] == ".osu"]
+        return [self.path + file for file in name_list if file[-4:] == ".osu"]
 
     def get_all_bg(self, name_list):
         supported_extension = [".jpg", ".jpeg", ".png"]
         self.all_bgs = [file for file in name_list if file[-4:] in supported_extension]
 
-    def new_audio_name(self, old_audio_name, old_title, counter):
+    def get_new_audio_name(self, old_audio_name, old_title, counter):
         try:
             extension_index = old_audio_name.index(".")
-            return self.remove_unallowed_character(old_title + "_" + str(counter) + old_audio_name[extension_index:])
+            return remove_unallowed_character(old_title + "_" + str(counter) + old_audio_name[extension_index:])
         except ValueError:
             print("Unsupported song format: no extensions.")
 
     def rename_osz_bg(self, old_bg_name, new_bg_name, counter):
         new_name = new_bg_name + "_" + str(counter) + old_bg_name[old_bg_name.index("."):]
-        os.rename(old_bg_name, new_name)
+        os.rename(self.path + old_bg_name, self.path + new_name)
         return new_name
 
     def reset(self):
@@ -137,12 +142,12 @@ class Utils:
 
     def change_audio_file_name(self):
         for k, v in self.audio_name_dict.items():
-            v = self.remove_unallowed_character(v)
-            os.rename(k, v)
+            v = remove_unallowed_character(v)
+            os.rename(self.path + k, self.path + v)
 
     def rename_osu_file(self, new_artist_unicode, new_title_unicode, new_creator, new_version_name):
-        return self.remove_unallowed_character(new_artist_unicode + " - " + new_title_unicode + " (" + new_creator + ") " + " [" + new_version_name + "].osu")
-
+        return remove_unallowed_character(
+            new_artist_unicode + " - " + new_title_unicode + " (" + new_creator + ") " + " [" + new_version_name + "].osu")
 
     def get_all_files_after_renaming(self):
         print("处理中: " + str(self.all_osu_after_renamed))
