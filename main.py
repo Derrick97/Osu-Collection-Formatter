@@ -22,7 +22,9 @@ if __name__ == '__main__':
     print("找到" + str(len(oszs)) + "个osz。")
     collection_name = input("输入新的包名(The Pack Name)：")
     creator = input("请输入作者名(The Creator Name)：")
-    collection_artist = "Various Artists"
+    collection_artist = input("请输入作曲者名,不输入则默认为Various Artists(The Artist Name, press enter to use default: Various Artists)：")
+    if not collection_artist:
+        collection_artist = "Various Artists"
     all_files = []
     print("少狼祈祷中...Loading...")
 
@@ -56,7 +58,7 @@ if __name__ == '__main__':
 
     zip = zipfile.ZipFile(collection_name+".osz", mode='w')
     for file in all_files:
-        zip.write(u.path + file)
+        zip.write(u.path + file, file)
 
     print("Removing tmp folder...")
     print("清理中...")
