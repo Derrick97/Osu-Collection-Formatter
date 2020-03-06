@@ -15,7 +15,8 @@ class Utils:
         self.audio_name_dict = {}
         self.music_counter = 0
         self.bg_counter = 0
-        self.all_bgs = []
+        self.name_list = []
+        # self.all_bgs = []
         self.bg_dict = {}
         self.all_osu = []
         self.all_osu_after_renamed = []
@@ -79,7 +80,7 @@ class Utils:
                 else:
                     old_bg_name = line.split(",")[2][1:-1]
                     try:
-                        self.all_bgs.index(old_bg_name)
+                        self.name_list.index(old_bg_name)
                     except:
                         print("The BG of " + osu_file_name + " is not found in the directory.")
                         print(osu_file_name + ": 该文件背景图(BG)未在osz中找到，中止操作。")
@@ -116,12 +117,12 @@ class Utils:
             return remove_unallowed_character(
                 old_artist + " - " + old_title + " [" + old_creator + "\'s " + old_version + "]")
 
-    def get_all_osu_diffs(self, name_list):
-        return [self.path + file for file in name_list if file[-4:] == ".osu"]
+    def get_all_osu_diffs(self):
+        return [self.path + file for file in self.name_list if file[-4:] == ".osu"]
 
-    def get_all_bg(self, name_list):
-        supported_extension = [".jpg", ".jpeg", ".png"]
-        self.all_bgs = [file for file in name_list if file[-4:] in supported_extension]
+    # def get_all_bg(self, name_list):
+    #     supported_extension = [".jpg", ".jpeg", ".png"]
+    #     self.all_bgs = [file for file in name_list if file[-4:] in supported_extension]
 
     def get_new_audio_name(self, old_audio_name, old_title, counter):
         try:
@@ -139,6 +140,7 @@ class Utils:
         self.audio_name_dict = {}
         self.bg_dict = {}
         self.all_osu_after_renamed = []
+        self.name_list = []
 
     def change_audio_file_name(self):
         for k, v in self.audio_name_dict.items():

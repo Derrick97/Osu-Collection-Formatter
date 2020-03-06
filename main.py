@@ -4,6 +4,7 @@ import sys
 import tempfile
 from Utils import Utils
 
+
 if __name__ == '__main__':
 
     print("------------------Made in Love From Wensi v.1.0.2------------------")
@@ -28,10 +29,6 @@ if __name__ == '__main__':
     all_files = []
     print("少狼祈祷中...Loading...")
 
-
-
-
-
     success = True
 
     f = tempfile.TemporaryDirectory(dir=os.getcwd())
@@ -44,9 +41,9 @@ if __name__ == '__main__':
             zip = zipfile.ZipFile(osz)
             all_file_names = zip.namelist()
             zip.extractall(u.path)
-            all_diffs = u.get_all_osu_diffs(all_file_names)
+            u.name_list = all_file_names
+            all_diffs = u.get_all_osu_diffs()
             u.all_osu = all_diffs
-            u.get_all_bg(all_file_names)
             for diff in all_diffs:
                 u.rename_osz_metadata(diff, collection_name, collection_name, collection_artist, collection_artist, creator)
             u.change_audio_file_name()
@@ -55,22 +52,17 @@ if __name__ == '__main__':
     except:
         print("Fail, please fix according to the error info, or directly contacts Derrickwolf@outlook.com.")
         print("出包失败，请按错误信息修复，或者联系Derrickwolf@outlook.com.")
+        x = input("Press Enter To Continue...按回车退出程序。")
+        sys.exit()
 
-    zip = zipfile.ZipFile(collection_name+".osz", mode='w')
+    new_name = collection_artist + " - " + collection_name+".osz"
+    print(all_files)
+    zip = zipfile.ZipFile(new_name, mode='w')
     for file in all_files:
         zip.write(u.path + file, file)
 
-    print("Removing tmp folder...")
-    print("清理中...")
-    try:
-        f.cleanup()
-        print("tmp folder removed.")
-        print("临时文件夹删除成功。")
-    except:
-        print("Failed to remove tmp folder.")
-        print("临时文件夹删除失败。")
-    print("Success! Saved as " + collection_name + ".osz in the current directory.")
-    print("整合成功！已保存为 " + collection_name + ".osz并存放在当前文件夹下。")
+    print("Success! Saved as " + new_name + " in the current directory.")
+    print("整合成功！已保存为 " + new_name + ".osz并存放在当前文件夹下。")
 
     x = input("Press Enter To Continue...按回车退出程序。")
 
