@@ -32,7 +32,6 @@ if __name__ == '__main__':
     success = True
 
     f = tempfile.TemporaryDirectory(dir=os.getcwd())
-    print(f.name)
 
     u.path = f.name + "\\"
 
@@ -56,7 +55,6 @@ if __name__ == '__main__':
         sys.exit()
 
     new_name = collection_artist + " - " + collection_name+".osz"
-    print(all_files)
     zip = zipfile.ZipFile(new_name, mode='w')
     for file in all_files:
         zip.write(u.path + file, file)
