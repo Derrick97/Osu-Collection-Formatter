@@ -39,7 +39,6 @@ class Utils:
         old_version_name = ""
         has_visited_audio = False
         bg_last_line_index = -2
-        print(osu_file_name)
         f = open(osu_file_name, "r+", encoding='utf-8')
         for i, line in enumerate(f):
             if "AudioFilename:" in line:
