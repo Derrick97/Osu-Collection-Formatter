@@ -7,7 +7,7 @@ from Utils import Utils
 
 if __name__ == '__main__':
 
-    print("------------------Made in Love From Wensi v.1.0.2------------------")
+    print("------------------Made in Love From Wensi v.1.0.3------------------")
     print("Please make sure all oszs that you want to pack together are in the same directory as this program.")
     print("请保证想要成包的所有歌曲osz都在本程序同一文件夹下。")
 
@@ -58,7 +58,6 @@ if __name__ == '__main__':
     zip = zipfile.ZipFile(new_name, mode='w')
     for file in all_files:
         zip.write(u.path + file, file)
-
     print("Success! Saved as " + new_name + " in the current directory.")
     print("整合成功！已保存为 " + new_name + ".osz并存放在当前文件夹下。")
 

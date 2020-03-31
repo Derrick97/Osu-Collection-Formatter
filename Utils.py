@@ -39,6 +39,7 @@ class Utils:
         old_version_name = ""
         has_visited_audio = False
         bg_last_line_index = -2
+        print(osu_file_name)
         f = open(osu_file_name, "r+", encoding='utf-8')
         for i, line in enumerate(f):
             if "AudioFilename:" in line:
@@ -79,12 +80,15 @@ class Utils:
                     line_list.append(line)
                 else:
                     old_bg_name = line.split(",")[2][1:-1]
-                    try:
-                        self.name_list.index(old_bg_name)
-                    except:
+                    if not old_bg_name in self.name_list:
                         print("The BG of " + osu_file_name + " is not found in the directory.")
-                        print(osu_file_name + ": 该文件背景图(BG)未在osz中找到，中止操作。")
-                        raise ValueError
+                        continue
+                    # try:
+                    #     self.name_list.index(old_bg_name)
+                    # except:
+                    #     print("The BG of " + osu_file_name + " is not found in the directory.")
+                    #     print(osu_file_name + ": 该文件背景图(BG)未在osz中找到，中止操作。")
+                    #     raise ValueError
 
                     if not old_bg_name in self.bg_dict.keys():
                         new_bg_name = self.rename_osz_bg(old_bg_name, new_title_unicode, self.bg_counter)
