@@ -6,8 +6,8 @@ A small Python script to make Osu beatmap Collections in a quick and beautiful w
 
 ## Preview: 
 (Now fixed to this naming style, only support custom pack name and custom creator name. Custom style will be supported in the future.)
-https://osu.ppy.sh/beatmapsets/1010028#mania/2114329
-V1.0.3 New: When bg used in .osu file is not found in the osz, the program will now warn the user instead of terminate the program. 
+https://osu.ppy.sh/beatmapsets/1010028#mania/2114329  
+**V1.0.3 New: When bg used in .osu file is not found in the osz, the program will now warn the user and continue instead of terminate the program.** 
 
 ## Running
 
@@ -75,8 +75,8 @@ Any unknown or not understandable errors, please directly contact derrickwolf@ou
   
 ## 预览：
 https://osu.ppy.sh/beatmapsets/1010028#mania/2114329
-注意：现在默认格式如此osz所示，只支持自定义作图者以及合集名称。更多自定义样式功能将在下一版本添加。
-V1.0.3新功能：如果.osu中引用的背景图未被包含在osz中，则程序会提醒用户并完成做包，而不会显示中止操作。
+注意：现在默认格式如此osz所示，只支持自定义作图者以及合集名称。更多自定义样式功能将在下一版本添加。   
+**V1.0.3新功能：如果.osu中引用的背景图未被包含在osz中，则程序会提醒用户并完成做包，而不会显示中止操作。**
 
 ## 运行
 此程序运行有两种方式：通过.py文件运行（需要python3或以上）或者通过.exe可执行文件运行（需要Windows）。
