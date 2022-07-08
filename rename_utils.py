@@ -9,8 +9,6 @@ def remove_unallowed_character(s):
     return s
 
 
-
-
 class Utils:
     def __init__(self, path):
         self.path = path
@@ -81,10 +79,15 @@ class Utils:
                     line_list.append(line)
                 else:
                     old_bg_name = line.split(",")[2][1:-1]
-                    base_name_list = [os.path.basename(name) for name in self.name_list]
-                    if old_bg_name not in base_name_list:
+                    if not old_bg_name in self.name_list:
                         print("The BG of " + osu_file_name + " is not found in the directory.")
                         continue
+                    # try:
+                    #     self.name_list.index(old_bg_name)
+                    # except:
+                    #     print("The BG of " + osu_file_name + " is not found in the directory.")
+                    #     print(osu_file_name + ": 该文件背景图(BG)未在osz中找到，中止操作。")
+                    #     raise ValueError
 
                     if not old_bg_name in self.bg_dict.keys():
                         new_bg_name = self.rename_osz_bg(old_bg_name, new_title_unicode, self.bg_counter)
@@ -118,10 +121,7 @@ class Utils:
                 old_artist + " - " + old_title + " [" + old_creator + "\'s " + old_version + "]")
 
     def get_all_osu_diffs(self):
-        return [self.path + os.path.basename(file) for file in self.name_list if file[-4:] == ".osu"]
-
-    def get_all_osu_diffs_from_other_folder(self, folder):
-        return [folder + file for file in self.name_list if file[-4:] == ".osu"]
+        return [self.path + file for file in self.name_list if file[-4:] == ".osu"]
 
     # def get_all_bg(self, name_list):
     #     supported_extension = [".jpg", ".jpeg", ".png"]
@@ -155,7 +155,7 @@ class Utils:
             new_artist_unicode + " - " + new_title_unicode + " (" + new_creator + ") " + " [" + new_version_name + "].osu")
 
     def get_all_files_after_renaming(self):
-        # print("处理中: " + str(self.all_osu_after_renamed))
+        print("处理中: " + str(self.all_osu_after_renamed))
         all_audio = list(self.audio_name_dict.values())
         all_bgs = list(self.bg_dict.values())
         return self.all_osu_after_renamed + all_audio + all_bgs

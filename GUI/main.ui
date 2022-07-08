@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>969</width>
+    <height>882</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Osu! Collection Formatter v2.0 (Powered by WS)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2" rowstretch="2,4,4" columnstretch="2,8,8">
+    <item row="0" column="1" rowspan="3">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="1">
+       <widget class="QListWidget" name="song_list">
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0" rowspan="2">
+     <widget class="QTextBrowser" name="debug"/>
+    </item>
+    <item row="0" column="2">
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="songNameLabel">
+        <property name="text">
+         <string>Song Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="songNameLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="songNameRomanisedLabel">
+        <property name="text">
+         <string>Song Name(Romanised)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="songNameRomanisedLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="artistLabel">
+        <property name="text">
+         <string>Artist</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="artistLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="artistRomanisedLabel">
+        <property name="text">
+         <string>Artist(Romanised)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="artistRomanisedLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="difficultynameLabel">
+        <property name="text">
+         <string>Difficulty Name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="difficultynameLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="levelLabel">
+        <property name="text">
+         <string>Level</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="levelLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="mapperLabel">
+        <property name="text">
+         <string>Mapper</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="mapperLineEdit">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QPushButton" name="select_chart">
+        <property name="text">
+         <string>Select Chart(s)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="selectFolder">
+        <property name="text">
+         <string>Select Folder(s)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="delete_chart">
+        <property name="text">
+         <string>Delete Chart(s)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="clearLog">
+        <property name="text">
+         <string>Clear Logs</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="2">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QGroupBox" name="optionsGroupBox">
+        <property name="title">
+         <string>Options</string>
+        </property>
+        <widget class="QWidget" name="formLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>521</width>
+           <height>101</height>
+          </rect>
+         </property>
+         <layout class="QFormLayout" name="formLayout_3">
+          <item row="0" column="0">
+           <widget class="QLabel" name="packNameLabel">
+            <property name="text">
+             <string>Pack Name</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="packNameLineEdit"/>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="packAuthorLabel">
+            <property name="text">
+             <string>Pack Author</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="packAuthorLineEdit"/>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="namingRuleLabel">
+            <property name="text">
+             <string>Naming Rule</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QComboBox" name="namingRuleComboBox">
+            <item>
+             <property name="text">
+              <string>Level</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Difficulty Name</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="packArtistLabel">
+            <property name="text">
+             <string>Pack Artist</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="packArtistLineEdit">
+            <property name="inputMask">
+             <string/>
+            </property>
+            <property name="placeholderText">
+             <string>Default: Various Artists</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="formLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>130</y>
+           <width>521</width>
+           <height>33</height>
+          </rect>
+         </property>
+         <layout class="QFormLayout" name="formLayout_4">
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="useOriginalLanguageInVersionNameCheckBox"/>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="useOriginalLanguageInVersionNameLabel">
+            <property name="text">
+             <string>Use Original Language in Version Name</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QPushButton" name="generateButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>280</y>
+           <width>101</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Generate Pack</string>
+         </property>
+        </widget>
+        <widget class="QWidget" name="formLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>170</y>
+           <width>401</width>
+           <height>41</height>
+          </rect>
+         </property>
+         <layout class="QFormLayout" name="formLayout_2">
+          <item row="0" column="0">
+           <widget class="QLabel" name="previewLabel">
+            <property name="text">
+             <string>Naming Preview</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" colspan="2">
+           <widget class="QLineEdit" name="lineEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="2" column="2">
+     <widget class="QTextBrowser" name="progressField"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>select_chart</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>browse_beatmaps()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>113</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>476</x>
+     <y>407</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>song_list</sender>
+   <signal>itemClicked(QListWidgetItem*)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>display_info()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>295</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>632</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>delete_chart</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remove_chart()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>75</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>631</x>
+     <y>530</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clearLog</sender>
+   <signal>clicked()</signal>
+   <receiver>debug</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>49</x>
+     <y>164</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>65</x>
+     <y>296</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>packNameLineEdit</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>toggle_generate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>670</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>568</x>
+     <y>-4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>packAuthorLineEdit</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>toggle_generate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>723</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>448</x>
+     <y>8</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>generateButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>format_pack()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>603</x>
+     <y>487</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>612</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>browse_beatmaps()</slot>
+  <slot>display_info()</slot>
+  <slot>remove_chart()</slot>
+  <slot>format_pack()</slot>
+  <slot>toggle_generate()</slot>
+ </slots>
+</ui>
